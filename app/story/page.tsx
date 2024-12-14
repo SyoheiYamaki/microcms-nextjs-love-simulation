@@ -57,7 +57,7 @@ export default function Page() {
     }
   };
 
-  if (!scene) return <div>読み込み中...</div>;
+  if (!scene) return null;
 
   const currentMessage = scene.messages?.[currentMessageIndex];
 
@@ -69,7 +69,7 @@ export default function Page() {
       className={styles.backgorund}
     >
       <Image
-        src="/logo.png"
+        src="/logo.webp"
         alt="1つのAPIで紡ぐマイクロストーリー"
         width={523}
         height={183}
@@ -78,7 +78,7 @@ export default function Page() {
       {currentMessage && (
         <div className={styles.container} onClick={handleNextMessage}>
           <p className={styles.speaker}>
-            {currentMessage.speaker.includes('me') ? name : 'あい'}
+            {currentMessage.speaker.includes('me') ? name : 'まい子'}
           </p>
           <p className={styles.text}>
             {currentMessage.text}

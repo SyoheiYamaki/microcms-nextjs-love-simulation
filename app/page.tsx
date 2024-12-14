@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Image
-        src="/logo.png"
+        src="/logo.webp"
         alt="1つのAPIで紡ぐマイクロストーリー"
         width={1023}
         height={393}
@@ -40,6 +40,7 @@ export default function Home() {
           className={styles.input}
           required
         />
+        <p className={styles.note}>※ 入力された名前は保存されませんし、悪用もしませんのでご安心ください。</p>
         <button
           className={styles.button}
         >
