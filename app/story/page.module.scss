@@ -1,0 +1,80 @@
+.container {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  width: 92%;
+  min-height: 160px;
+  border: solid 2px red;
+  background: rgba(255, 228, 225, 0.7);
+  transform: translateX(-50%);
+  border-radius: 8px;
+  padding: 24px 40px;
+  z-index: 10;
+  &:hover {
+    cursor: pointer;
+  }
+  &:after {
+    content: "▼";
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    font-size: 18px;
+    color: #d14544;
+    animation: blink 1s infinite;
+  }
+}
+.speaker {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background: #db6f6f;
+  padding: 2px 40px 2px 20px;
+  color: white;
+  font-size: 20px;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1; /* 完全表示 */
+  }
+  50% {
+    opacity: 0; /* 完全に消える */
+  }
+}
+
+.text {
+  font-size: 22px;
+  letter-spacing: 0.1em;
+}
+
+.character {
+  position: absolute;
+  bottom: 0;
+  z-index: 5;
+  height: 100svh;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.layer {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .6);
+  z-index: 20;
+}
+.action {
+  width: 60%;
+  padding: 12px 12px;
+  background: rgb(255, 228, 225);
+  border-radius: 40px;
+  border: solid 2px hotpink;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+}
