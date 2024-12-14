@@ -64,12 +64,17 @@ export default function Page() {
   return (
     <div
       style={{
-        position: 'relative',
         backgroundImage: background ? `url(${background.url})` : undefined,
-        backgroundSize: 'cover',
-        minHeight: '100svh',
       }}
+      className={styles.backgorund}
     >
+      <Image
+        src="/logo.png"
+        alt="1つのAPIで紡ぐマイクロストーリー"
+        width={523}
+        height={183}
+        className={styles.logo}
+      />
       {currentMessage && (
         <div className={styles.container} onClick={handleNextMessage}>
           <p className={styles.speaker}>

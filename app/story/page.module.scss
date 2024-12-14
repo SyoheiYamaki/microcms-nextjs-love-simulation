@@ -1,3 +1,16 @@
+.backgorund {
+  position: relative;
+  min-height: 100svh;
+  background-size: cover;
+  background-position: center;
+}
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 280px;
+  height: auto;
+}
 .container {
   position: absolute;
   bottom: 40px;
@@ -35,10 +48,10 @@
 
 @keyframes blink {
   0%, 100% {
-    opacity: 1; /* 完全表示 */
+    opacity: 1;
   }
   50% {
-    opacity: 0; /* 完全に消える */
+    opacity: 0;
   }
 }
 

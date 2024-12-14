@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { useUser } from "./context/UserContext";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
+import Image from "next/image";
 
 export default function Home() {
   const { setName } = useUser();
@@ -20,9 +21,15 @@ export default function Home() {
   }
   return (
     <div className={styles.container}>
-      <h1>恋愛シミュレーションゲーム（ロゴ入れる予定）</h1>
+      <Image
+        src="/logo.png"
+        alt="1つのAPIで紡ぐマイクロストーリー"
+        width={1023}
+        height={393}
+        className={styles.logo}
+      />
       <form
-        className={styles.inner}
+        className={styles.form}
         onSubmit={(e) => handleStart(e)}
       >
         <input
