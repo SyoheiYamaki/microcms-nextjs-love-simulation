@@ -1,6 +1,6 @@
 'use client';
 
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import { useUser } from "./context/UserContext";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
@@ -38,6 +38,7 @@ export default function Home() {
           value={inputName}
           onChange={(e) => setInputName(e.target.value)}
           className={styles.input}
+          maxLength={8}
           required
         />
         <p className={styles.note}>※ 入力された名前は保存されませんし、悪用もしませんのでご安心ください。</p>

@@ -17,6 +17,9 @@
 .form {
   max-width: 640px;
   width: 80%;
+  @include sp {
+    width: 92%;
+  }
 }
 .input {
   display: block;
@@ -26,6 +29,14 @@
   padding: 16px 24px;
   border-radius: 8px;
   border: solid 2px hotpink;
+  &:hover {
+    border-color: #cf3381;
+    outline: #cf3381;
+  }
+  &:focus {
+    border-color: #cf3381;
+    outline: #cf3381;
+  }
 }
 .note {
   color: #888;

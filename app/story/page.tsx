@@ -62,12 +62,13 @@ export default function Page() {
             setMessageAnimationClass(styles[data.messages[0].animations[0]])
           }
         });
-
     } else if (action.type.includes('openUrl') && action.url) {
       // TODO: 種別によって別タブか変更する
       window.open(action.url, "_blank");
     } else if (action.type.includes('gameOver')) {
       router.push("/");
+    } else if (action.type.includes('goToEndroll')) {
+      router.push("/ending")
     }
   };
 
