@@ -15,6 +15,8 @@ export default function Page() {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [background, setBackground] = useState<MicroCMSImage | undefined>(undefined);
   const [character, setCharacter] = useState<MicroCMSImage | undefined>(undefined);
+  const [messageAnimationClass, setMessageAnimationClass] = useState<string>("");
+  const [visibleActions, setVisibleActions] = useState<boolean>(false);
 
   useEffect(() => {
     if (!name) router.push("/");
@@ -30,13 +32,19 @@ export default function Page() {
   }, [router, name])
 
   const handleNextMessage = () => {
-    setCurrentMessageIndex((prev) => prev + 1);
-
+    // MEMO: 次のメッセージが存在する場合
     if (scene && currentMessageIndex < scene.messages.length - 1) {
-      // setCurrentMessageIndex((prev) => prev + 1);
-      // キャラクター画像が更新される場合のみ変更
-      const nextCharacter = scene.messages[currentMessageIndex + 1]?.character;
+      setCurrentMessageIndex((prev) => prev + 1);
+
+      const nextMessage = scene.messages[currentMessageIndex + 1];
+      const nextCharacter = nextMessage?.character;
       if (nextCharacter) setCharacter(nextCharacter);
+
+      if (nextMessage.animations.length) {
+        setMessageAnimationClass(styles[nextMessage.animations[0]])
+      }
+    } else {
+      setVisibleActions(true);
     }
   };
 
@@ -45,15 +53,21 @@ export default function Page() {
       fetch(`/api/scenes/${action.next_scene.id}`)
         .then((res) => res.json())
         .then((data: Scene) => {
+          setVisibleActions(false);
           setScene(data);
           setCurrentMessageIndex(0);
           if (data.background) setBackground(data.background);
+          if (data.messages[0].character) setCharacter(data.messages[0].character);
+          if (data.messages[0].animations.length) {
+            setMessageAnimationClass(styles[data.messages[0].animations[0]])
+          }
         });
 
     } else if (action.type.includes('openUrl') && action.url) {
-      // window.location.href = action.url;
       // TODO: 種別によって別タブか変更する
       window.open(action.url, "_blank");
+    } else if (action.type.includes('gameOver')) {
+      router.push("/");
     }
   };
 
@@ -66,7 +80,7 @@ export default function Page() {
       style={{
         backgroundImage: background ? `url(${background.url})` : undefined,
       }}
-      className={styles.backgorund}
+      className={`${styles.backgorund} ${messageAnimationClass}`}
     >
       <Image
         src="/logo.webp"
@@ -81,7 +95,7 @@ export default function Page() {
             {currentMessage.speaker.includes('me') ? name : 'まい子'}
           </p>
           <p className={styles.text}>
-            {currentMessage.text}
+            {currentMessage.text.replaceAll('{name}', name)}
           </p>
         </div>
       )}
@@ -96,7 +110,7 @@ export default function Page() {
         />
       )}
 
-      {currentMessageIndex > scene.messages.length - 1 && (
+      {visibleActions && (
         <div className={styles.layer}>
           {scene.actions.map((action) => (
             <button

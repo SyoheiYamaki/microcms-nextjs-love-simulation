@@ -17,13 +17,14 @@ type Message = {
   text: string;
   speaker: ("me" | "heroin")[];
   character?: MicroCMSImage;
+  animations: ("crash" | "spring")[];
 }
 
 type Action = {
   label: string;
   next_scene?: Scene,
   url?: string;
-  type: ("goToNextScene" | "openUrl" | "goToEndroll")[];
+  type: ("goToNextScene" | "openUrl" | "goToEndroll" | "gameOver")[];
 }
 
 export type Scene = {
