@@ -32,6 +32,11 @@ export const metadata: Metadata = {
     description: "中小企業診断士の方のホームページ制作や改善、定期更新サポートを行うWeb制作サービスです。",
     images: ["https://microcms-nextjs-love-simulation.vercel.app/og_image.jpg"],
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+    ],
+  },
 };
 
 export default function RootLayout({
