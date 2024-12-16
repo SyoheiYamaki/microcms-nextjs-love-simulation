@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "シンダンシノミカタ | 中小企業診断士向けWeb制作サービス",
-    description: "中小企業診断士の方のホームページ制作や改善、定期更新サポートを行うWeb制作サービスです。",
+    title: "1つのAPIで紡ぐマイクロストーリー",
+    description: "microCMSとNext.jsから生まれたエンジニアとデザイナーのマイクロなAPIストーリー！？",
     images: ["https://microcms-nextjs-love-simulation.vercel.app/og_image.jpg"],
   },
   icons: {
