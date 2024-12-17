@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { UserProvider } from './context/UserContext';
 import { M_PLUS_1 } from 'next/font/google'
+import { Analytics } from "@vercel/analytics/react"
 
 const mPlus1 = M_PLUS_1({
   weight: ["400", "700", "900"],
@@ -50,6 +51,7 @@ export default function RootLayout({
         <UserProvider>
           {children}
         </UserProvider>
+        <Analytics />
       </body>
     </html>
   );
